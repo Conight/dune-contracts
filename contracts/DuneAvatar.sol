@@ -15,7 +15,7 @@ contract DuneAvatar is ERC721, ERC721Enumerable, ERC721URIStorage, Pausable, Own
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("DuneAvatar", "DNA") {}
+    constructor() ERC721("DuneAvatar", "AVATAR") {}
 
     function pause() public onlyOwner {
         _pause();
