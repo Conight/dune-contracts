@@ -11,8 +11,8 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20FlashMint.sol";
 
 /// @custom:security-contact tunogya@wakandalabs.cn
-contract SpicesCoin is ERC20, ERC20Burnable, ERC20Snapshot, Ownable, Pausable, ERC20Permit, ERC20Votes, ERC20FlashMint {
-    constructor() ERC20("SpicesCoin", "SPC") ERC20Permit("SpicesCoin") {}
+contract Spice is ERC20, ERC20Burnable, ERC20Snapshot, Ownable, Pausable, ERC20Permit, ERC20Votes, ERC20FlashMint {
+    constructor() ERC20("Spice", "SPC") ERC20Permit("Spice") {}
 
     function snapshot() public onlyOwner {
         _snapshot();
