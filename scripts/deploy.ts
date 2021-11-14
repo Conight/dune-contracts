@@ -14,12 +14,27 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const DuneAvatar = await ethers.getContractFactory("DuneAvatar");
+  const duneAvatar = await DuneAvatar.deploy();
+  const DuneGovernor = await ethers.getContractFactory("DuneGovernor");
+  const duneGovernor = await DuneGovernor.deploy();
+  const DuneItems = await ethers.getContractFactory("DuneItems");
+  const duneItems = await DuneItems.deploy();
+  const DuneLand = await ethers.getContractFactory("DuneLand");
+  const duneLand = await DuneLand.deploy();
+  const DuneSpices = await ethers.getContractFactory("DuneSpices");
+  const duneSpices = await DuneSpices.deploy();
+  await duneAvatar.deployed();
+  await duneGovernor.deployed();
+  await duneItems.deployed();
+  await duneLand.deployed();
+  await duneSpices.deployed();
 
-  await greeter.deployed();
-
-  console.log("Greeter deployed to:", greeter.address);
+  console.log("DuneAvatar deployed to:", duneAvatar.address);
+  console.log("DuneGovernor deployed to:", duneGovernor.address);
+  console.log("DuneItems deployed to:", duneItems.address);
+  console.log("DuneLand deployed to:", duneLand.address);
+  console.log("DuneSpices deployed to:", duneSpices.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
