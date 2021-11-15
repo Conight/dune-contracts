@@ -13,9 +13,9 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
   // DuneAvatar deployed to: 0x99E0a3060de3695d819fCFa52CD00aece8236fB2
+  // DuneSpices deployed to: 0xB178Becd317302816d7270b9B7186C44Dd1642AD
   // DuneGovernor deployed to: 0xbADa8898BeAD5Ec2Fa763072fd7EC52d34d876fB
   // DuneLand deployed to: 0xeD9950f548B4b5cC514DaaE3FE8fB84394bEF57d
-  // DuneSpices deployed to: 0xB178Becd317302816d7270b9B7186C44Dd1642AD
 
   // We get the contract to deploy
   const DuneAvatar = await ethers.getContractFactory("DuneAvatar");
@@ -32,9 +32,9 @@ async function main() {
   await duneLand.deployed();
 
   console.log("DuneAvatar deployed to:", duneAvatar.address);
+  console.log("DuneSpices deployed to:", duneSpices.address);
   console.log("DuneGovernor deployed to:", duneGovernor.address);
   console.log("DuneLand deployed to:", duneLand.address);
-  console.log("DuneSpices deployed to:", duneSpices.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
