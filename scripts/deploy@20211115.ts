@@ -20,15 +20,15 @@ async function main() {
   const DuneSpices = await ethers.getContractFactory("DuneSpices");
   const duneSpices = await DuneSpices.deploy();
   await duneSpices.deployed();
-  // const DuneGovernor = await ethers.getContractFactory("DuneGovernor");
-  // const duneGovernor = await DuneGovernor.deploy(duneSpices.address, );
-  // await duneGovernor.deployed();
+  const DuneGovernor = await ethers.getContractFactory("DuneGovernor");
+  const duneGovernor = await DuneGovernor.deploy(duneSpices.address);
+  await duneGovernor.deployed();
   const DuneLand = await ethers.getContractFactory("DuneLand");
   const duneLand = await DuneLand.deploy();
   await duneLand.deployed();
 
   console.log("DuneAvatar deployed to:", duneAvatar.address);
-  // console.log("DuneGovernor deployed to:", duneGovernor.address);
+  console.log("DuneGovernor deployed to:", duneGovernor.address);
   console.log("DuneLand deployed to:", duneLand.address);
   console.log("DuneSpices deployed to:", duneSpices.address);
 }
