@@ -1,35 +1,27 @@
 # dune-contracts
-Dune contracts on flow blockchain
 
-## Ethereum
+Dune contracts on blockchain
 
-Try running some of the following tasks:
+## DuneSpices FT
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.ts
-TS_NODE_FILES=true npx ts-node scripts/deploy.ts
-npx eslint '**/*.{js,ts}'
-npx eslint '**/*.{js,ts}' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
-```
+- Everyone can mint spices, even if you don't own DuneLand.
+- Spices can be taken(destroyed) by DuneAvatar.
+- Minting spices requires placing DuneAvatar in DuneLand.
+- If there are sandworm in the mining process and they don't escape in time, they will lose everything.
+- Minting spices in your own DuneLand will have an extra bonus.
+- more...
 
-```shell
-hardhat run --network ropsten scripts/sample-script.ts
-```
+## DuneLand NFT
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
+- The number of DuneLand that can be developed in the first batch is 10000.
+- The development of DuneLand will be decided later through governance.
+- DuneLand cannot be destroyed and ownership can be transferred.
+- more...
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
+## DuneAvatar NFT
+
+- DuneAvatar is the core NFT of the dune game.
+- DuneAvatar improves its attributes by taking DuneSpices.
+- DuneAvatar can set the tokenURI when it is created by the user.
+- DuneAvatar will Die. There is no eternal NFT.
+- more...
