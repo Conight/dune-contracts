@@ -16,14 +16,12 @@ async function main() {
   );
   const DuneAvatar = await ethers.getContractFactory("DuneAvatar");
   const duneAvatarProxy = await upgrades.deployProxy(DuneAvatar, {
-    initializer: "initialize",
     kind: "uups",
   });
   await duneAvatarProxy.deployed();
   console.log("DuneAvatarProxy deployed to:", duneAvatarProxy.address);
   const DuneSpices = await ethers.getContractFactory("DuneSpices");
   const duneSpicesProxy = await upgrades.deployProxy(DuneSpices, {
-    initializer: "initialize",
     kind: "uups",
   });
   await duneSpicesProxy.deployed();
@@ -33,7 +31,6 @@ async function main() {
   // await duneGovernor.deployed();
   const DuneLand = await ethers.getContractFactory("DuneLand");
   const duneLandProxy = await upgrades.deployProxy(DuneLand, {
-    initializer: "initialize",
     kind: "uups",
   });
   await duneLandProxy.deployed();
