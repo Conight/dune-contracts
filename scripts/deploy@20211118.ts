@@ -7,6 +7,10 @@ import { ethers, upgrades } from "hardhat";
 
 async function main() {
   // Prepare to deploy
+  // Deployed on Rinkeby
+  // DuneAvatarProxy deployed to: 0x2f9aa793020fEA13787a22b73117cFBddF3E97bE
+  // DuneLandProxy deployed to: 0x0F2370E357Ab12B1e7c659880d714Dbf9b87393B
+  // DuneSpicesProxy deployed to: 0x2484DB44d14804169df5C38094DEe044ac0B39DF
   const [deployer] = await ethers.getSigners();
   console.log("Deploying account:", await deployer.getAddress());
   console.log(
