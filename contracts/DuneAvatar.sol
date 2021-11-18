@@ -28,7 +28,7 @@ contract DuneAvatar is Initializable, ERC721Upgradeable, ERC721EnumerableUpgrade
         __UUPSUpgradeable_init();
     }
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function safeMint(address to, string memory uri) public {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
