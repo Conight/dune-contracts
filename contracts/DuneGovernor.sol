@@ -7,9 +7,11 @@ import "@openzeppelin/contracts-upgradeable/governance/extensions/GovernorVotesU
 import "@openzeppelin/contracts-upgradeable/governance/extensions/GovernorVotesQuorumFractionUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/governance/extensions/GovernorTimelockControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 /// @custom:security-contact tunogya@qq.com
-contract DuneGovernor is Initializable, GovernorUpgradeable, GovernorCompatibilityBravoUpgradeable, GovernorVotesUpgradeable, GovernorVotesQuorumFractionUpgradeable, GovernorTimelockControlUpgradeable {
+contract DuneGovernor is Initializable, GovernorUpgradeable, GovernorCompatibilityBravoUpgradeable, GovernorVotesUpgradeable, GovernorVotesQuorumFractionUpgradeable, GovernorTimelockControlUpgradeable, OwnableUpgradeable, UUPSUpgradeable {
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() initializer {}
 
@@ -21,6 +23,8 @@ contract DuneGovernor is Initializable, GovernorUpgradeable, GovernorCompatibili
         __GovernorVotes_init(_token);
         __GovernorVotesQuorumFraction_init(4);
         __GovernorTimelockControl_init(_timelock);
+        __Ownable_init();
+        __UUPSUpgradeable_init();
     }
 
     function votingDelay() public pure override returns (uint256) {
@@ -34,6 +38,12 @@ contract DuneGovernor is Initializable, GovernorUpgradeable, GovernorCompatibili
     function proposalThreshold() public pure override returns (uint256) {
         return 0e18;
     }
+
+    function _authorizeUpgrade(address newImplementation)
+    internal
+    onlyOwner
+    override
+    {}
 
     // The following functions are overrides required by Solidity.
 

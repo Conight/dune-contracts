@@ -7,10 +7,11 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URISto
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721BurnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
 
 /// @custom:security-contact tunogya@qq.com
-contract DuneAvatar is Initializable, ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable, OwnableUpgradeable {
+contract DuneAvatar is Initializable, ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable, OwnableUpgradeable, UUPSUpgradeable {
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
     CountersUpgradeable.Counter private _tokenIdCounter;
@@ -24,14 +25,21 @@ contract DuneAvatar is Initializable, ERC721Upgradeable, ERC721EnumerableUpgrade
         __ERC721URIStorage_init();
         __ERC721Burnable_init();
         __Ownable_init();
+        __UUPSUpgradeable_init();
     }
 
-    function safeMint(address to, string memory uri) public {
+    function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
     }
+
+    function _authorizeUpgrade(address newImplementation)
+    internal
+    onlyOwner
+    override
+    {}
 
     // The following functions are overrides required by Solidity.
 

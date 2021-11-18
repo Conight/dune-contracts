@@ -5,9 +5,10 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20BurnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 /// @custom:security-contact tunogya@qq.com
-contract DuneSpices is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, OwnableUpgradeable {
+contract DuneSpices is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, OwnableUpgradeable, UUPSUpgradeable {
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() initializer {}
 
@@ -15,9 +16,16 @@ contract DuneSpices is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable
         __ERC20_init("DuneSpices", "SPICES");
         __ERC20Burnable_init();
         __Ownable_init();
+        __UUPSUpgradeable_init();
     }
 
     function mint(address to, uint256 amount) public {
         _mint(to, amount);
     }
+
+    function _authorizeUpgrade(address newImplementation)
+    internal
+    onlyOwner
+    override
+    {}
 }
