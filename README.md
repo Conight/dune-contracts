@@ -32,4 +32,27 @@ Dune contracts on blockchain. **Sandform** is your opponent.
 
 ## Governor
 
-- Vote with DuneSpices.
+Vote with DuneSpices. Governor parameter:
+
+### DuneSpices FT
+1. The number of basic spices that each person can dig.
+2. DuneLand owner's amount of spice digging.
+3. The number of people needed to collect spices in batches.
+4. 
+
+### DuneLand NFT
+1. DuneLand's total supply.
+2. The maximum number of DuneLands owned by each Avatar.
+3. Maximum number of people carried per DuneLand.
+4. Will DuneLand be recycled after Avatar dies?
+
+### DuneAvatar NFT
+1. The maximum number of Avatars that can be created per wallet account.
+
+
+### DuneGovernor
+
+1. Proposal Threshold
+2. Voting Delay
+3. Voting Period
+4. Quorum

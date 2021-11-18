@@ -3,7 +3,7 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-import { ethers } from "hardhat";
+import { ethers, upgrades } from "hardhat";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -15,22 +15,22 @@ async function main() {
 
   // We get the contract to deploy
   const DuneAvatar = await ethers.getContractFactory("DuneAvatar");
-  const duneAvatar = await DuneAvatar.deploy();
-  await duneAvatar.deployed();
+  const duneAvatarProxy = await upgrades.deployProxy(DuneAvatar);
+  await duneAvatarProxy.deployed();
   const DuneSpices = await ethers.getContractFactory("DuneSpices");
-  const duneSpices = await DuneSpices.deploy();
-  await duneSpices.deployed();
+  const duneSpicesProxy = await upgrades.deployProxy(DuneSpices);
+  await duneSpicesProxy.deployed();
   // const DuneGovernor = await ethers.getContractFactory("DuneGovernor");
   // const duneGovernor = await DuneGovernor.deploy(duneSpices.address, );
   // await duneGovernor.deployed();
   const DuneLand = await ethers.getContractFactory("DuneLand");
-  const duneLand = await DuneLand.deploy();
-  await duneLand.deployed();
+  const duneLandProxy = await upgrades.deployProxy(DuneLand);
+  await duneLandProxy.deployed();
 
-  console.log("DuneAvatar deployed to:", duneAvatar.address);
+  console.log("DuneAvatarProxy deployed to:", duneAvatarProxy.address);
   // console.log("DuneGovernor deployed to:", duneGovernor.address);
-  console.log("DuneLand deployed to:", duneLand.address);
-  console.log("DuneSpices deployed to:", duneSpices.address);
+  console.log("DuneLandProxy deployed to:", duneLandProxy.address);
+  console.log("DuneSpicesProxy deployed to:", duneSpicesProxy.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
