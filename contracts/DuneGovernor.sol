@@ -28,7 +28,7 @@ contract DuneGovernor is Initializable, GovernorUpgradeable, GovernorCompatibili
     }
 
     function votingDelay() public pure override returns (uint256) {
-        return 1; // 1 block
+        return 6545; // 1 day
     }
 
     function votingPeriod() public pure override returns (uint256) {
