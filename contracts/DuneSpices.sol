@@ -23,6 +23,12 @@ contract DuneSpices is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable
     }
 
     function mint(address to, uint256 amount) public {
+        //  send the avatar into this address, and start the mint process
+        //  if mint success, avatar will get the spices,
+        //  or burn the avatar, and got 0 spices
+        //  use another contracts to store the data of Minting
+        //  1. use approve
+        //  2. transfer avatar first
         _mint(to, amount);
     }
 
